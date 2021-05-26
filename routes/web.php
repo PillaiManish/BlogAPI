@@ -19,6 +19,9 @@ $router->get('/', function () use ($router) {
 
 $router->post('register','AccountController@register');
 $router->post('login','AccountController@login');
+$router->post('logout','AccountController@logout');
+$router->patch('changepassword','AccountController@changePassword');
+$router->delete('delete','AccountController@delete');
 
 $router->group(['prefix' => 'blog'], function () use ($router) {
     $router->get('/','BlogController@list');
