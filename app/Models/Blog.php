@@ -31,7 +31,7 @@ class Blog extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
     ];
 
-    public function blog(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }

@@ -26,7 +26,7 @@ $router->delete('delete','AccountController@delete');
 $router->group(['prefix' => 'blog'], function () use ($router) {
     $router->get('/','BlogController@list');
     $router->post('add','BlogController@add');
-    $router->patch('edit','BlogController@edit');
+    $router->post('edit','BlogController@edit');
     $router->delete('delete','BlogController@delete');
 
 });

@@ -8,6 +8,7 @@ use App\Models\Blog;
 use Validator;
 
 
+
 class BlogController extends Controller
 {
     /**
@@ -32,8 +33,9 @@ class BlogController extends Controller
         $input = Validator::make($request->all(),[
             'title'         => 'required|min:2',
             'description'   => 'required|min:20',
-            'image'         => 'required'
         ]);
+
+        $image = $request->file('image')->store('images');
 
         if ($input->fails()){
             return response()->json([
@@ -42,7 +44,7 @@ class BlogController extends Controller
             ],401);
         }
 
-        Blog::create(['user_id'=>auth()->user()->id,'title'=>$request->title, 'description'=>$request->description, 'image'=>$request->image]);
+        Blog::create(['user_id'=>auth()->user()->id,'title'=>$request->title, 'description'=>$request->description, 'image'=>$image]);
         return response()->json([
             'status'    => 'Success',
             'message'   => 'New Post has been created'
@@ -54,36 +56,34 @@ class BlogController extends Controller
             'id'            => 'required',
             'title'         => 'required|min:2',
             'description'   => 'required|min:20',
-            'image'         => 'required'
         ]);
 
 
         if ($input->fails()){
             return response()->json([
                 'status' => 'Error',
-                'message'=> 'Please check if input are correct'
+                'message'=> $input->errors()
             ],401);
         }
 
         $blog = Blog::find($request->id);
         
-        if ($blog->user == auth()->user()){
-            $blog->title = $request->title;
-            $blog->description = $request->description;
-            $blog->image = $request->image;
-            $blog->save();
-
-            return response()->json([
-                "status"    => "Success",
-                "message"   => "Your post has been updated."
-            ], 200);
-        }
-        else{
+        if ($blog->user->id != auth()->user()->id){
             return response()->json([
                 "status"    => "Error",
                 "message"   => "You don't have access to delete this blog"
             ],401);
+    
         }
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->image = $request->file('image')->store('images');
+        $blog->save();
+
+        return response()->json([
+            "status"    => "Success",
+            "message"   => "Your post has been updated."
+        ], 200);
     }
 
     public function delete(Request $request){
@@ -100,14 +100,15 @@ class BlogController extends Controller
 
         $blog   = Blog::find($request->id);
 
-        if (! $todo->user() == auth()->user()){
+        return auth()->user()->id;
+        if ($blog->user->id != auth()->user()->id){
             return response()->json([
                 'status'    => 'Error',
                 'message'   => 'You are not the owner of the post'   
             ],401);
         }
 
-        $todo->delete();
+        $blog->delete();
         return response()->json([
             'status'    => 'Success',
             'message'   => 'Post has been deleted' 
