@@ -1,24 +1,25 @@
-# Lumen PHP Framework
+# Steps to Setup
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+1. Download this code as zip. Or you can even do fork or git clone.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+2. Setup into a folder. Extract the zip file into required folder
 
-## Official Documentation
+3. Run following command
+   ``` composer update ```
+4. Now, make a copy of .env example file and rename as .env
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+5. Now, in this .env file do the changes as required (for example, database and password according to your requirement)
 
-## Contributing
+6. Finally, run the project using 
+   ``` php -S localhost:8000 -t public ```
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. Open the postman and try importing the following collection.
+   https://www.getpostman.com/collections/5d0f1f6448834be15d41
 
-## Security Vulnerabilities
+8. Test API as per your requirement
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Document for the API https://documenter.getpostman.com/view/12387672/TzXtK1Ag
+
+## Thank You
