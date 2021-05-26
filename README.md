@@ -14,12 +14,12 @@
    ``` php -S localhost:8000 -t public ```
 
 7. Open the postman and try importing the following collection.
-   https://www.getpostman.com/collections/5d0f1f6448834be15d41
+   
 
 8. Test API as per your requirement
 
 
 
-Document for the API https://documenter.getpostman.com/view/12387672/TzXtK1Ag
+Document for the API 
 
 ## Thank You
