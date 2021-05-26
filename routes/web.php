@@ -16,3 +16,14 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('register','AccountController@register');
+$router->post('login','AccountController@login');
+
+$router->group(['prefix' => 'blog'], function () use ($router) {
+    $router->get('/','BlogController@list');
+    $router->post('add','BlogController@add');
+    $router->patch('edit','BlogController@edit');
+    $router->delete('delete','BlogController@delete');
+
+});

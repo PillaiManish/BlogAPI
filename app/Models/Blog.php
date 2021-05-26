@@ -1,9 +1,4 @@
-public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-
-    <?php
+<?php
 
 namespace App\Models;
 
@@ -25,7 +20,7 @@ class Blog extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'image'
+        'title', 'description', 'image', 'user_id'
     ];
 
     /**
@@ -37,6 +32,6 @@ class Blog extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     public function blog(){
-        return $this->hasMany(Blog::class);
+        return $this->belongsTo(User::class);
     }
 }

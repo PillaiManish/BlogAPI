@@ -63,7 +63,8 @@ class AccountController extends Controller
         }
 
         $user = User::create([
-            'name'      => $request->name,
+            'first_name'      => $request->first_name,
+            'last_name'      => $request->last_name,
             'email'     => $request->email,
             'password'  => app('hash')->make($request->password),
         ]);
@@ -113,7 +114,7 @@ class AccountController extends Controller
 
         return response()->json([
             'status'    => 'Success',
-            'message'   => 'Yours password has been successfully saved'
+            'message'   => 'Your password has been successfully saved'
         ],200);
 
     }
